@@ -22,7 +22,6 @@
 DO NOT USE IT IN PRODUCTION ENVIRONMENTS.
 
 Bootgly Console Platform is under construction.
-The first beta is planned for September 2023.
 
 [Documentation is under construction][PROJECT_DOCS].
 

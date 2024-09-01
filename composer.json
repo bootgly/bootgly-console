@@ -1,5 +1,6 @@
 {
    "name": "bootgly/bootgly-console",
+   "version": "0.1.0-alpha",
    "type": "library",
    "description": "The Bootgly Console bootable.",
    "license": "MIT",
@@ -7,9 +8,11 @@
       "bootgly",
       "php",
       "framework",
+
       "cli",
       "console",
-      "bootable"
+
+      "module"
    ],
    "authors": [
       {
@@ -24,8 +27,7 @@
       ]
    },
    "require": {
-      "php": "^8.2",
-      "bootgly/bootgly": "v0.5.1-beta"
+      "bootgly/bootgly": "dev-main"
    },
    "minimum-stability": "dev"
 }

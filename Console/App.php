@@ -8,8 +8,10 @@
  * --------------------------------------------------------------------------
  */
 
+namespace Console;
 
-abstract class Console // TODO
+
+abstract class App // TODO
 {
    // * Config
    // ...
@@ -17,8 +19,8 @@ abstract class Console // TODO
    // * Data
    // ...
 
-   // * Metadata
-   private static bool $booted = false;
+   // * Meta
+   // ...
 
    public function autoboot ()
    {

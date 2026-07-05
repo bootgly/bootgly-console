@@ -28,6 +28,7 @@ use Console\Games\Canvas;
 use Console\Games\Keyboard;
 use Console\Games\Loop;
 use Console\Games\Scenes;
+use Console\Games\Sprites;
 
 
 /**
@@ -49,6 +50,7 @@ abstract class Games extends App
    public Keyboard $Keyboard;
    public Loop $Loop;
    public Scenes $Scenes;
+   public Sprites $Sprites;
 
    // * Metadata
    // ...
@@ -78,6 +80,7 @@ abstract class Games extends App
       $this->Keyboard = new Keyboard;
       $this->Loop = new Loop($this->Keyboard);
       $this->Scenes = new Scenes;
+      $this->Sprites = new Sprites;
    }
 
    /**

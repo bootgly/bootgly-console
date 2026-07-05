@@ -19,5 +19,10 @@ return new Suite(
       '2.1-keyboard-state',
       '3.1-loop-ticks',
       '4.1-scenes-machine',
+      '5.1-sprite-frames-stamp',
+      '6.1-sprites-sheet',
+      '7.1-timer-cadence',
+      '8.1-vector-ops',
+      '9.1-zone-collision',
    ]
 );

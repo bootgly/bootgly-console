@@ -56,7 +56,7 @@ class App
 
    // * Config
    /** Render throttle (frames per second) */
-   public int $fps = 30;
+   public int $FPS = 30;
 
    // * Data
    public Keymaps $Keymaps;
@@ -174,7 +174,7 @@ class App
 
          // @ Redraw + throttle
          $this->render();
-         usleep((int) (1000000 / $this->fps));
+         usleep((int) (1000000 / $this->FPS));
       }
 
       $this->restore();

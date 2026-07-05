@@ -27,7 +27,7 @@ define('CONSOLE_VERSION', '0.1.0-alpha');
 // -- nothing --
 
 // ! Classes ([A-Z])
-// App (Application Programming Interface)
+// Console\* (platform entities) + global Console (bootable)
 spl_autoload_register (function (string $class) {
    $paths = explode('\\', $class);
    $file = implode('/', $paths) . '.php';
@@ -38,3 +38,13 @@ spl_autoload_register (function (string $class) {
       @include(CONSOLE_ROOT_DIR . $file);
    }
 });
+
+// ! Resources ([a-z])
+// ...
+
+// @
+/**
+ * @var Console Console
+ */
+const Console = new Console;
+Console->autoboot();

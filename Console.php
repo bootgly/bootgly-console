@@ -8,8 +8,11 @@
  * --------------------------------------------------------------------------
  */
 
+// Global namespace: `Exception` resolves directly (a `use` import here would
+// raise "use statement with non-compound name has no effect").
 
-abstract class Console // TODO
+
+class Console
 {
    // * Config
    // ...
@@ -20,8 +23,25 @@ abstract class Console // TODO
    // * Metadata
    private static bool $booted = false;
 
-   public function autoboot ()
+
+   /**
+    * Autoboot the Console platform.
+    *
+    * The Console platform is a class library over `Bootgly\CLI`:
+    * Apps are booted per project by their `.project.php` signature —
+    * there are no process-wide workables to warm here.
+    *
+    * @return void
+    *
+    * @throws Exception
+    */
+   public function autoboot (): void
    {
-      // TODO
+      // ?
+      if (self::$booted)
+         throw new Exception("Console has already been booted.");
+
+      // * Metadata
+      self::$booted = true;
    }
 }

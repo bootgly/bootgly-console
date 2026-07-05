@@ -1,0 +1,18 @@
+parameters:
+   level: 9
+   excludePaths:
+      analyse:
+         - */tests/*
+         - */projects/*
+   reportUnmatchedIgnoredErrors: false
+
+   paths:
+      - ../Console.php
+      - ../Console/
+   ignoreErrors:
+      - identifier: property.uninitializedReadonly
+      - identifier: property.private
+      - identifier: property.protected
+      - identifier: property.readOnlyAssignNotInConstructor
+      - identifier: property.readOnlyAssignOutOfClass
+      - identifier: assign.propertyReadOnly

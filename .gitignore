@@ -1,0 +1,8 @@
+# Composer
+/vendor/
+/@imports/
+composer.lock
+
+# Bootgly resources (installed by `bootgly boot --resources`)
+/storage/
+/tmp/

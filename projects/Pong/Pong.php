@@ -42,14 +42,14 @@ class Pong extends Games
    public int $size = 4;
    /** Winning score */
    public int $goal = 5;
-   /** Player paddle speed (cells per second — scaled to the board at construct) */
-   public float $speed = 20.0;
+   /** Player paddle step per keystroke (cells — scaled to the board at construct) */
+   public float $step = 1.0;
    /** AI paddle speed cap (cells per second — scaled to the board at construct) */
    public float $pace = 12.0;
 
    // * Data
    public Ball $Ball;
-   /** Player paddle top row (float for smooth held movement) */
+   /** Player paddle top row (float — moved in keystroke impulses) */
    public float $player = 8.0;
    /** AI paddle top row */
    public float $rival = 8.0;
@@ -69,8 +69,8 @@ class Pong extends Games
 
       // * Config — scale the gameplay to the board
       $this->size = max(4, intdiv($rows, 5));
-      $this->speed = (float) $rows;
-      $this->pace = $rows * 0.6;
+      $this->step = max(1.0, $rows / 20.0);
+      $this->pace = $rows * 0.45;
 
       // * Data
       $this->Ball = new Ball;
@@ -221,18 +221,28 @@ class Pong extends Games
       $top = 1.0;
       $bottom = (float) ($rows - 1 - $this->size);
 
-      // @ Player paddle (held arrows = smooth movement)
-      if ($this->Keyboard->check('UP') === true) {
-         $this->player = max($top, $this->player - $this->speed * $delta);
+      // @ Player paddle: one impulse per queued keystroke — a tap is one precise
+      // step with zero delay; holding streams the terminal auto-repeats
+      // (capped per tick so input bursts cannot teleport the paddle)
+      $moves = 0;
+      while ($moves < 3 && $this->Keyboard->pop('UP') === true) {
+         $this->player = max($top, $this->player - $this->step);
+         $moves++;
       }
-      if ($this->Keyboard->check('DOWN') === true) {
-         $this->player = min($bottom, $this->player + $this->speed * $delta);
+      while ($moves < 3 && $this->Keyboard->pop('DOWN') === true) {
+         $this->player = min($bottom, $this->player + $this->step);
+         $moves++;
       }
 
-      // @ AI paddle: track the ball center with a capped speed
+      // @ AI paddle: chase only while the ball approaches (capped speed);
+      // drift back to the center at half pace otherwise — beatable by design
+      $middle = ($rows - $this->size) / 2.0 + $this->size / 2.0;
+      $target = $this->Ball->dx > 0 ? $this->Ball->y : $middle;
+      $limit = ($this->Ball->dx > 0 ? $this->pace : $this->pace / 2.0) * $delta;
+
       $center = $this->rival + $this->size / 2.0;
-      $chase = $this->Ball->y - $center;
-      $step = min($this->pace * $delta, $chase >= 0 ? $chase : - $chase);
+      $chase = $target - $center;
+      $step = min($limit, $chase >= 0 ? $chase : - $chase);
       $this->rival = max($top, min($bottom, $this->rival + ($chase >= 0 ? $step : - $step)));
 
       // @ Ball

@@ -15,17 +15,56 @@
   </a>
 </p>
 
-> Bootgly Console platform composed by CLI interface.
+> Bootgly Console Platform composed by the CLI interface.
 
-🚧
+The **opinionated TUI layer** over `Bootgly\CLI`: an application shell for full-screen terminal apps and a module for terminal games. Everything it wires remains plain CLI underneath.
 
-DO NOT USE IT IN PRODUCTION ENVIRONMENTS.
+## Getting started
 
-Bootgly Console Platform is under construction.
+Use the **canonical installer** — it sets up a [bootgly.kit](https://github.com/bootgly/bootgly.kit) workspace, where the platforms are unified, and asks which ones to enable (pick **Console**):
 
-[Documentation is under construction][PROJECT_DOCS].
+```bash
+curl -fsSL https://bootgly.com/install | bash
+```
 
-🚧
+From the kit, the project wizard imports this platform's demo projects (**Import projects from Platforms → Console**):
+
+```bash
+php bootgly project create
+```
+
+> ⚠️ Using this repository directly is **discouraged** — `bootgly.kit` is the starting point: it is where the Bootgly core and the platforms are mounted and booted together. See [Getting started](https://docs.bootgly.com/guide/getting-started). Cloning `bootgly-console` standalone is only meant for developing the platform itself.
+
+## Modules
+
+- **`Console\App`** — the TUI application shell: terminal lifecycle (alternate screen, raw input, resize, restore-on-exit), Screens + Router navigation, Keymaps with chords, Statusbar, Toasts, command Palette and log Tail.
+- **`Console\Games`** — the game shell over App: fixed-timestep Loop, diff-rendered Canvas, held-key Keyboard heuristics, Scenes, Sprite sheets and 2D math (Vector, Zone).
+
+## Demo projects (exportable)
+
+| Project    | Shows |
+|------------|-------|
+| `Snake`    | Classic Snake — Games module basics: loop, canvas, held-key steering |
+| `Pong`     | Pong vs AI — paddles, ball physics, scenes |
+| `Invaders` | Space Invaders — sprite sheets and 2D math (hitboxes) |
+
+After importing them in the kit:
+
+```bash
+php bootgly project Snake start
+```
+
+## Developing the platform
+
+Only for working on `bootgly-console` itself (with the `bootgly` core as a sibling checkout):
+
+```bash
+./bootgly test                                # test suites
+vendor/bin/phpstan analyse -c @/phpstan.neon  # static analysis
+./bootgly project Snake start                 # run a demo
+```
+
+[Documentation][PROJECT_DOCS] — see the *Console Platform* guide and the *Console* manual pages.
 
 
 

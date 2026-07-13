@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace projects\Invaders;
+namespace Invaders;
 
 
 use function array_values;

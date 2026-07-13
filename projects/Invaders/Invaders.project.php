@@ -11,7 +11,7 @@
 
 use Bootgly\API\Projects\Project;
 
-use projects\Invaders\Invaders;
+use Invaders\Invaders;
 
 
 return new Project(

@@ -11,7 +11,7 @@
 
 use Bootgly\API\Projects\Project;
 
-use projects\Pong\Pong;
+use Pong\Pong;
 
 
 return new Project(

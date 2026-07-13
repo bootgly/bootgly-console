@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace projects\Pong;
+namespace Pong;
 
 
 use function random_int;

@@ -26,15 +26,16 @@ use function preg_split;
 use function usleep;
 
 use const Bootgly\CLI;
+use Bootgly\API\Component;
 use Bootgly\CLI\Terminal;
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Input\Keystrokes;
 use Bootgly\CLI\Terminal\Output;
 use Bootgly\CLI\Terminal\Screen;
+use Bootgly\CLI\UI\Atoms\Statusbar;
 use Console\App\Keymaps;
 use Console\App\Palette;
 use Console\App\Screens;
-use Console\App\Statusbar;
 use Console\App\Toasts;
 
 
@@ -78,17 +79,19 @@ class App
 
    public function __construct (null|Input $Input = null, null|Output $Output = null)
    {
-      // * Data
-      $this->Keymaps = new Keymaps;
-      $this->Screens = new Screens;
-      $this->Statusbar = new Statusbar;
-      $this->Toasts = new Toasts;
-      $this->Palette = new Palette($this->Keymaps);
-
-      // * Metadata
+      // * Metadata — I/O resolves first (the widgets write through the Output)
       $this->Input = $Input ?? CLI->Terminal->Input;
       $this->Output = $Output ?? CLI->Terminal->Output;
       $this->Screen = new Screen($this->Output);
+
+      // * Data
+      $this->Keymaps = new Keymaps;
+      $this->Screens = new Screens;
+      $this->Statusbar = new Statusbar($this->Output);
+      // ? The App composes the frame — the bar always returns its row
+      $this->Statusbar->render = Component::RETURN_OUTPUT;
+      $this->Toasts = new Toasts;
+      $this->Palette = new Palette($this->Keymaps);
    }
 
    /**

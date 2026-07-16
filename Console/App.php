@@ -33,10 +33,10 @@ use Bootgly\CLI\Terminal\Input\Keystrokes;
 use Bootgly\CLI\Terminal\Output;
 use Bootgly\CLI\Terminal\Screen;
 use Bootgly\CLI\UI\Atoms\Statusbar;
+use Bootgly\CLI\UX\Components\Toasts;
 use Console\App\Keymaps;
 use Console\App\Palette;
 use Console\App\Screens;
-use Console\App\Toasts;
 
 
 /**
@@ -90,7 +90,9 @@ class App
       $this->Statusbar = new Statusbar($this->Output);
       // ? The App composes the frame — the bar always returns its row
       $this->Statusbar->render = Component::RETURN_OUTPUT;
-      $this->Toasts = new Toasts;
+      $this->Toasts = new Toasts($this->Output);
+      // ? RETURN pin — flash() hands painting to the App loop instead of blocking
+      $this->Toasts->render = Component::RETURN_OUTPUT;
       $this->Palette = new Palette($this->Keymaps);
    }
 
@@ -217,12 +219,11 @@ class App
 
       $lines = explode("\n", $content);
 
-      // @ Overlay toasts on the top rows
-      $this->Toasts->expire();
-      $toasts = (string) $this->Toasts->render();
-      if ($toasts !== '') {
-         foreach (explode("\n", $toasts) as $index => $toast) {
-            $lines[$index] = $toast;
+      // @ Overlay the toast boxes on their absolute rows (interactive only —
+      // pipes already streamed the plain classified line at add())
+      if (BOOTGLY_TTY === true) {
+         foreach ($this->Toasts->overlay() as $row => $toast) {
+            $lines[$row - 1] = $toast;
          }
       }
 

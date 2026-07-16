@@ -84,14 +84,15 @@ return new Specification(
       );
       $App->control("\e"); // Esc dismisses
 
-      // @ Toast overlay rows
-      $App->Toasts->add('Saved!', ttl: 3600.0);
+      // @ Toasts — on non-TTY the core stack streams a plain classified line
+      // at add() (interactive runs overlay the composed boxes instead)
+      $App->Toasts->add('Saved!', TTL: 3600.0);
       $App->render();
       rewind($Output->stream);
       $frame = (string) stream_get_contents($Output->stream);
       yield assert(
          assertion: str_contains($frame, 'Saved!'),
-         description: 'Toast rows overlay the frame'
+         description: 'Toast output reaches the App stream'
       );
 
       // @ quit() stops the loop flag

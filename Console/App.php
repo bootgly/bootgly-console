@@ -171,8 +171,9 @@ class App
             pcntl_signal_dispatch();
          }
 
-         // @ Handle one keystroke (non-blocking; escape sequences arrive whole)
-         $key = $this->Input->read(8);
+         // @ Handle one keystroke — the canonical reader assembles CSI/SS3/UTF-8
+         // sequences whole (a raw read(8) could split sequences longer than 8 bytes)
+         $key = $this->Input->listen();
          if ($key !== false && $key !== '') {
             $this->control($key);
          }

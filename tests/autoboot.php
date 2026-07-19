@@ -11,5 +11,9 @@ return new Suites(
       'Console/App/',
       // ? Games module (Canvas, Keyboard, Loop, Scenes)
       'Console/Games/',
+      // ! Game projects — example signature suites (kit import guide)
+      'projects/Invaders/',
+      'projects/Pong/',
+      'projects/Snake/',
    ]
 );

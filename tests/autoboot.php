@@ -9,8 +9,8 @@ return new Suites(
       'Console/',
       // ? App shell (Keymaps, Router, Screens, widgets)
       'Console/App/',
-      // ? Games module (Canvas, Keyboard, Loop, Scenes)
-      'Console/Games/',
+      // ? Game module (Canvas, Keyboard, Loop, Scenes)
+      'Console/Game/',
       // ! Game projects — example signature suites (kit import guide)
       'projects/Invaders/',
       'projects/Pong/',

@@ -15,7 +15,7 @@ return new Suite(
    suiteName: __NAMESPACE__,
    tests: [
       '1.1-console-autoboot',
-      '2.1-games-client-tokens',
-      '2.2-games-canvas-render',
+      '2.1-game-client-tokens',
+      '2.2-game-canvas-render',
    ]
 );

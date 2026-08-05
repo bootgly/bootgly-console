@@ -18,17 +18,17 @@ use function round;
 
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Output;
-use Console\Games;
-use Console\Games\Scenes\Scene;
+use Console\Game;
+use Console\Game\Scenes\Scene;
 
 
 /**
- * Pong — 1 player vs a simple AI (Console platform Games module demo).
+ * Pong — 1 player vs a simple AI (Console platform Game module demo).
  *
  * Scenes: Menu → Play → Over. Hold ↑/↓ to move the left paddle,
  * first to 5 points wins, `q` quits, Enter starts / restarts.
  */
-class Pong extends Games
+class Pong extends Game
 {
    // ! ANSI styles
    private const string BORDER = "\e[90m";
@@ -63,7 +63,7 @@ class Pong extends Games
    {
       parent::__construct($Input, $Output, columns: 60, rows: 30, aspect: 2);
 
-      // ! Board size (terminal-fitted by the Games shell)
+      // ! Board size (terminal-fitted by the Game shell)
       $columns = $this->Canvas->columns;
       $rows = $this->Canvas->rows;
 

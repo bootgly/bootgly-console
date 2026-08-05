@@ -9,7 +9,7 @@
  */
 
 
-use Console\Games\Sprite;
+use Console\Game\Sprite;
 
 
 // Unicode sprite sheet — 1 character = 1 logical pixel (the Canvas aspect

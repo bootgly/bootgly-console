@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Console\Games\Scenes;
+namespace Console\Game\Scenes;
 
 
 use Closure;

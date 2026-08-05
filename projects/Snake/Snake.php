@@ -18,17 +18,17 @@ use function intdiv;
 
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Output;
-use Console\Games;
-use Console\Games\Scenes\Scene;
+use Console\Game;
+use Console\Game\Scenes\Scene;
 
 
 /**
- * Classic Snake — the Console platform Games module demo.
+ * Classic Snake — the Console platform Game module demo.
  *
  * Scenes: Menu → Play → Over. Arrows steer, holding an arrow accelerates
  * (auto-repeat detection), `q` quits, Enter starts / restarts.
  */
-class Snake extends Games
+class Snake extends Game
 {
    // ! ANSI styles
    private const string BORDER = "\e[90m";

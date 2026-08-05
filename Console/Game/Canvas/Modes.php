@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Console\Games\Canvas;
+namespace Console\Game\Canvas;
 
 
 /**

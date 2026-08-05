@@ -1,6 +1,6 @@
 <?php
 
-namespace Console\Games;
+namespace Console\Game;
 
 
 use function assert;

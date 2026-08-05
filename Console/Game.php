@@ -24,11 +24,11 @@ use Bootgly\CLI\Terminal;
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Input\Keystrokes;
 use Bootgly\CLI\Terminal\Output;
-use Console\Games\Canvas;
-use Console\Games\Keyboard;
-use Console\Games\Loop;
-use Console\Games\Scenes;
-use Console\Games\Sprites;
+use Console\Game\Canvas;
+use Console\Game\Keyboard;
+use Console\Game\Loop;
+use Console\Game\Scenes;
+use Console\Game\Sprites;
 
 
 /**
@@ -40,7 +40,7 @@ use Console\Games\Sprites;
  * each tick calls `update()`, each frame calls `draw()` and diff-flushes the
  * `Canvas`. Embedded runtimes (WASM) run one role per process transparently.
  */
-abstract class Games extends App
+abstract class Game extends App
 {
    // * Config
    // ...
@@ -86,7 +86,7 @@ abstract class Games extends App
    /**
     * Run the game: fork the Terminal Client/Server pair and drive the loop.
     *
-    * @param null|string $screen Unused by games (App signature compatibility).
+    * @param null|string $screen Unused by the Game (App signature compatibility).
     */
    public function run (null|string $screen = null): void
    {

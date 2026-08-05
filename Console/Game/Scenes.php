@@ -8,12 +8,12 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Console\Games;
+namespace Console\Game;
 
 
 use InvalidArgumentException;
 
-use Console\Games\Scenes\Scene;
+use Console\Game\Scenes\Scene;
 
 
 /**

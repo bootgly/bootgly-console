@@ -1,6 +1,6 @@
 <?php
 
-use Console\Games\Sprite;
+use Console\Game\Sprite;
 
 return [
    new Sprite('dot', frames: ['●']),

@@ -21,15 +21,15 @@ use function round;
 
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Output;
-use Console\Games;
-use Console\Games\Scenes\Scene;
-use Console\Games\Timer;
-use Console\Games\Vector;
-use Console\Games\Zone;
+use Console\Game;
+use Console\Game\Scenes\Scene;
+use Console\Game\Timer;
+use Console\Game\Vector;
+use Console\Game\Zone;
 
 
 /**
- * Invaders — Console platform Games module demo (Sprites + 2D math).
+ * Invaders — Console platform Game module demo (Sprites + 2D math).
  *
  * A formation of sprite-sheet aliens marches sideways, descends at the
  * borders and accelerates as it shrinks (a mutable Timer interval). Move
@@ -37,7 +37,7 @@ use Console\Games\Zone;
  * Vectors integrate every projectile and Zones resolve every collision.
  * Endless waves; 3 lives; `q` quits, Enter starts / restarts.
  */
-class Invaders extends Games
+class Invaders extends Game
 {
    // ! ANSI styles
    private const string BORDER = "\e[90m";
@@ -79,7 +79,7 @@ class Invaders extends Games
    public array $shots = [];
    /** @var array<int,Bolt> Alien bombs (moving down) */
    public array $bombs = [];
-   /** @var array<int,array{Sprite:\Console\Games\Sprite,Timer:Timer,x:int,y:int}> Explosions */
+   /** @var array<int,array{Sprite:\Console\Game\Sprite,Timer:Timer,x:int,y:int}> Explosions */
    public array $booms = [];
    /** March cadence (interval mutates as the formation shrinks) */
    public Timer $March;
@@ -102,7 +102,7 @@ class Invaders extends Games
    {
       parent::__construct($Input, $Output, columns: 40, rows: 26, aspect: 2);
 
-      // ! Board size (terminal-fitted by the Games shell)
+      // ! Board size (terminal-fitted by the Game shell)
       $columns = $this->Canvas->columns;
       $rows = $this->Canvas->rows;
 

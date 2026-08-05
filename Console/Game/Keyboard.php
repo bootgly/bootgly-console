@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Console\Games;
+namespace Console\Game;
 
 
 use function microtime;

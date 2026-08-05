@@ -1,11 +1,11 @@
 <?php
 
-namespace Console\Games;
+namespace Console\Game;
 
 use function assert;
 
 use Bootgly\ACI\Tests\Suite\Test\Specification;
-use Console\Games\Scenes\Scene;
+use Console\Game\Scenes\Scene;
 use InvalidArgumentException;
 
 return new Specification(

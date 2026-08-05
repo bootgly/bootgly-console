@@ -17,7 +17,7 @@ use Snake\Snake;
 return new Project(
    // # Project Metadata
    name: 'Snake',
-   description: 'Classic Snake game — Console platform Games module demo',
+   description: 'Classic Snake game — Console platform Game module demo',
    version: '1.0.0',
    author: 'Bootgly',
    exportable: true,

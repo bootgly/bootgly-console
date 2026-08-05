@@ -38,13 +38,13 @@ php bootgly project create
 ## Modules
 
 - **`Console\App`** — the TUI application shell: terminal lifecycle (alternate screen, raw input, resize, restore-on-exit), Screens + Router navigation, Keymaps with chords, Statusbar, Toasts, command Palette and log Tail.
-- **`Console\Games`** — the game shell over App: fixed-timestep Loop, diff-rendered Canvas, held-key Keyboard heuristics, Scenes, Sprite sheets and 2D math (Vector, Zone).
+- **`Console\Game`** — the game shell over App: fixed-timestep Loop, diff-rendered Canvas, held-key Keyboard heuristics, Scenes, Sprite sheets and 2D math (Vector, Zone).
 
 ## Demo projects (exportable)
 
 | Project    | Shows |
 |------------|-------|
-| `Snake`    | Classic Snake — Games module basics: loop, canvas, held-key steering |
+| `Snake`    | Classic Snake — Game module basics: loop, canvas, held-key steering |
 | `Pong`     | Pong vs AI — paddles, ball physics, scenes |
 | `Invaders` | Space Invaders — sprite sheets and 2D math (hitboxes) |
 

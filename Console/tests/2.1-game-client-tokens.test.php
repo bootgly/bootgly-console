@@ -23,7 +23,7 @@ return new Specification(
       $Input = new Input($stream); // @phpstan-ignore-line
       $Output = new Output('php://memory');
 
-      $Game = new class ($Input, $Output) extends Games {
+      $Game = new class ($Input, $Output) extends Game {
          public function pump (callable $read, callable $write): void
          {
             $this->client($read, $write);

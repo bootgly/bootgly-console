@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Console\Games;
+namespace Console\Game;
 
 
 use function count;
@@ -20,13 +20,13 @@ use function mb_strlen;
 
 use Bootgly\CLI\Terminal\Output;
 
-use Console\Games\Canvas\Modes;
+use Console\Game\Canvas\Modes;
 
 
 /**
  * Cell framebuffer with double buffering and diff rendering.
  *
- * Games paint logical pixels into the back buffer (`plot()` / `draw()`);
+ * The Game paints logical pixels into the back buffer (`plot()` / `draw()`);
  * `flush()` composes them into terminal cells for the active packing mode
  * (Block / Half / Braille), diffs against the front buffer and writes only
  * the dirty cell runs — an unchanged frame costs zero writes.

@@ -11,7 +11,7 @@
 namespace Invaders;
 
 
-use Console\Games\Vector;
+use Console\Game\Vector;
 
 
 /**

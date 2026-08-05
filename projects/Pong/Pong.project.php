@@ -17,7 +17,7 @@ use Pong\Pong;
 return new Project(
    // # Project Metadata
    name: 'Pong',
-   description: 'Pong vs AI — Console platform Games module demo',
+   description: 'Pong vs AI — Console platform Game module demo',
    version: '1.0.0',
    author: 'Bootgly',
    exportable: true,

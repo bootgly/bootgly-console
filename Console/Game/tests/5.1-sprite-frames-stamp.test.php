@@ -1,6 +1,6 @@
 <?php
 
-namespace Console\Games;
+namespace Console\Game;
 
 use function assert;
 use function fopen;
@@ -11,7 +11,7 @@ use function stream_get_contents;
 use Bootgly\ACI\Tests\Suite\Test\Specification;
 use Bootgly\CLI\Terminal\Output;
 
-use Console\Games\Canvas\Modes;
+use Console\Game\Canvas\Modes;
 
 return new Specification(
    description: 'It should parse WYSIWYG frames, stamp with transparency and animate on both paths',

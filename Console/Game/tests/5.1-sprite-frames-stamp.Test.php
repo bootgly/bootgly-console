@@ -8,12 +8,12 @@ use function ftruncate;
 use function rewind;
 use function stream_get_contents;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Output;
 
 use Console\Game\Canvas\Modes;
 
-return new Specification(
+return new Test(
    description: 'It should parse WYSIWYG frames, stamp with transparency and animate on both paths',
    test: function () {
       // ! Canvas 6×3 logical pixels (aspect 1) on a memory stream

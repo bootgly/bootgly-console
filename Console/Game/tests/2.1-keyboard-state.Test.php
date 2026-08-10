@@ -4,9 +4,9 @@ namespace Console\Game;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should track pressed (edge) and held (repeat-window) key states',
    test: function () {
       // ! Keyboard with an injected clock (grace 0.6s, window 0.15s)

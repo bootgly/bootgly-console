@@ -10,11 +10,11 @@ use function stream_get_contents;
 use function strlen;
 use function substr;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Output;
 
 
-return new Specification(
+return new Test(
    description: 'It should diff-render frames: full first flush, zero writes when unchanged, one run per change',
    test: function () {
       // ! Canvas 6×3 (Block) with an in-memory Output

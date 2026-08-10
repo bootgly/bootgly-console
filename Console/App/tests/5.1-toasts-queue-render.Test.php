@@ -9,14 +9,14 @@ use function count;
 use function preg_replace;
 use function str_contains;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal;
 use Bootgly\CLI\Terminal\Output;
 use Bootgly\CLI\UI\Components\Alert\Type;
 use Bootgly\CLI\UX\Components\Toasts;
 
 
-return new Specification(
+return new Test(
    description: 'It should compose the core Toasts stack as App overlay rows',
    test: function () {
       // ! Deterministic terminal size

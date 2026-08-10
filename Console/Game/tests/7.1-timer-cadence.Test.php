@@ -4,9 +4,9 @@ namespace Console\Game;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should fire on interval, carry remainders and support one-shot cooldowns',
    test: function () {
       // ! Repeating timer (0.5s cycle)

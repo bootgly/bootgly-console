@@ -5,9 +5,9 @@ namespace Console\Game;
 use function assert;
 use InvalidArgumentException;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should register sprites, share instances for lockstep and load sheet files',
    test: function () {
       // ! Sheet with one two-frame sprite

@@ -4,9 +4,9 @@ namespace Console\Game;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should mutate in place, chain, integrate with a factor and compute length',
    test: function () {
       // ! Vectors

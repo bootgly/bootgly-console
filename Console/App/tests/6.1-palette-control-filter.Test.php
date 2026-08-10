@@ -6,10 +6,10 @@ use function assert;
 use function count;
 use function str_contains;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Input\Keystrokes;
 
-return new Specification(
+return new Test(
    description: 'It should filter bindings by query and run the selected action',
    test: function () {
       // ! Keymaps + Palette

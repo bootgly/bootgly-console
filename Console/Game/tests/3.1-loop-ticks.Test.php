@@ -4,9 +4,9 @@ namespace Console\Game;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should run fixed-timestep ticks over a scripted channel and stop on limit or close',
    test: function () {
       // ! Loop at a high tick rate with a tick limit (deterministic, fast)

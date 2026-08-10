@@ -28,7 +28,7 @@ class Console
     * Autoboot the Console platform.
     *
     * The Console platform is a class library over `Bootgly\CLI`:
-    * Apps are booted per project by their `.project.php` signature —
+    * Apps are booted per project by their `.Project.php` signature —
     * there are no process-wide workables to warm here.
     *
     * @return void

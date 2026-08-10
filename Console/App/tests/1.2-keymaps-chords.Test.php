@@ -4,9 +4,9 @@ namespace Console\App;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should buffer chord prefixes and expire them after the timeout',
    test: function () {
       // ! Keymaps with a chord binding

@@ -5,9 +5,9 @@ namespace Console\App;
 use function assert;
 use function count;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should navigate screens through the stack (switch / push / pop)',
    test: function () {
       // ! Screens with the fixture manifest

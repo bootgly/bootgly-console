@@ -4,11 +4,11 @@ namespace Console\App;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Closure;
 use InvalidArgumentException;
 
-return new Specification(
+return new Test(
    description: 'It should load the screens manifest and resolve screen views',
    test: function () {
       // ! Router with the fixture manifest

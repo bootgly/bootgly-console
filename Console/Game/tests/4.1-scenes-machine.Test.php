@@ -4,11 +4,11 @@ namespace Console\Game;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Console\Game\Scenes\Scene;
 use InvalidArgumentException;
 
-return new Specification(
+return new Test(
    description: 'It should register scenes and switch between them running the enter hooks',
    test: function () {
       // ! Scenes

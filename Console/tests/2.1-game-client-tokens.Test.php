@@ -10,12 +10,12 @@ use function fopen;
 use function implode;
 use function strlen;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Output;
 
 
-return new Specification(
+return new Test(
    description: 'It should pump keystrokes as newline-framed tokens (chunked, escape-aware)',
    test: function () {
       // ! Game with in-memory streams (client() exposed)

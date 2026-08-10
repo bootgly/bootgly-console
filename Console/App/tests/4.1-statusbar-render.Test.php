@@ -8,14 +8,14 @@ use function mb_strlen;
 use function preg_replace;
 use function str_contains;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\API\Component;
 use Bootgly\CLI\Terminal;
 use Bootgly\CLI\Terminal\Output;
 use Bootgly\CLI\UI\Atoms\Statusbar;
 
 
-return new Specification(
+return new Test(
    description: 'It should compose the core Statusbar Atom as the App status row',
    test: function () {
       // ! Deterministic terminal width

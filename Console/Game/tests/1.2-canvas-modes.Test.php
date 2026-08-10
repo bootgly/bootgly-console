@@ -7,11 +7,11 @@ use function rewind;
 use function str_contains;
 use function stream_get_contents;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Output;
 use Console\Game\Canvas\Modes;
 
-return new Specification(
+return new Test(
    description: 'It should pack pixels into half-block and Braille cells',
    test: function () {
       // ! Half mode: 1 cell = 1×2 pixels

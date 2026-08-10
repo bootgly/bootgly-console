@@ -9,14 +9,14 @@ use function ftruncate;
 use function rewind;
 use function stream_get_contents;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Output;
 
 use Console\Game\Canvas;
 use Console\Game\Canvas\Modes;
 
 
-return new Specification(
+return new Test(
    description: 'It should render square pixels (aspect), diff frames and repaint the region after reset',
    test: function () {
       // ! Canvas 4×2 logical pixels, aspect 2 → 8×2 terminal cells

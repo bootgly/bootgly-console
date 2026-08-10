@@ -8,13 +8,13 @@ use function rewind;
 use function str_contains;
 use function stream_get_contents;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal;
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Output;
 use Console\App;
 
-return new Specification(
+return new Test(
    description: 'It should compose frames: screen view + status bar + overlays (help, palette, toasts)',
    test: function () {
       // ! Deterministic terminal size

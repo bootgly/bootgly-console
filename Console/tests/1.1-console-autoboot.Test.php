@@ -7,11 +7,11 @@ use function assert;
 use function class_exists;
 use function defined;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Console\App;
 
 
-return new Specification(
+return new Test(
    description: 'It should autoboot the Console platform (constants + bootable + autoloader)',
    test: function () {
       // @ Constants

@@ -4,9 +4,9 @@ namespace Console\Game;
 
 use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 
-return new Specification(
+return new Test(
    description: 'It should test AABB overlap (strict), point containment (inclusive) and clamp points',
    test: function () {
       // ! Zones

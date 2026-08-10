@@ -5,10 +5,10 @@ namespace Console\App;
 use function assert;
 use function count;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Input\Keystrokes;
 
-return new Specification(
+return new Test(
    description: 'It should bind and handle single-key bindings',
    test: function () {
       // ! Keymaps

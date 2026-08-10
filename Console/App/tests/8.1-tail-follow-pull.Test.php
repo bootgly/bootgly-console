@@ -9,12 +9,12 @@ use function count;
 use function fopen;
 use function json_encode;
 
-use Bootgly\ACI\Tests\Suite\Test\Specification;
+use Bootgly\ACI\Tests\Suite\Test;
 use Bootgly\CLI\Terminal\Input;
 use Bootgly\CLI\Terminal\Output;
 
 
-return new Specification(
+return new Test(
    description: 'It should follow a pull source and drain it into the log buffer',
    test: function () {
       // ! Tail with in-memory streams

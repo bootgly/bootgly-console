@@ -6,3 +6,6 @@ composer.lock
 # Bootgly resources (installed by `bootgly boot --resources`)
 /storage/
 /tmp/
+
+# Ignore docs (kept in the .docs repository; `docs` may be a local symlink)
+docs

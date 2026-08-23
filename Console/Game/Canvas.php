@@ -61,7 +61,7 @@ class Canvas
 
 
    public function __construct (
-      Output &$Output, int $columns, int $rows, Modes $Mode = Modes::Block, int $aspect = 1
+      Output $Output, int $columns, int $rows, Modes $Mode = Modes::Block, int $aspect = 1
    )
    {
       // * Config

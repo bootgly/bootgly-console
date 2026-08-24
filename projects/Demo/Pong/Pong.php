@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Pong;
+namespace Demo\Pong;
 
 
 use function intdiv;

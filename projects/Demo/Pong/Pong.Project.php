@@ -11,19 +11,19 @@
 
 use Bootgly\API\Projects\Project;
 
-use Invaders\Invaders;
+use Demo\Pong\Pong;
 
 
 return new Project(
    // # Project Metadata
-   name: 'Invaders',
-   description: 'Invaders — Console platform Sprites + 2D math demo',
+   name: 'Pong',
+   description: 'Pong vs AI — Console platform Game module demo',
    version: '1.0.0',
    author: 'Bootgly',
    exportable: true,
    boot: function (array $arguments = [], array $options = []): void
    {
-      $Invaders = new Invaders;
-      $Invaders->run();
+      $Pong = new Pong;
+      $Pong->run();
    }
 );

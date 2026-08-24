@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Snake;
+namespace Demo\Snake;
 
 
 use function in_array;

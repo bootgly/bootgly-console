@@ -12,8 +12,8 @@ return new Suites(
       // ? Game module (Canvas, Keyboard, Loop, Scenes)
       'Console/Game/',
       // ! Game projects — example signature suites (kit import guide)
-      'projects/Invaders/tests/project/',
-      'projects/Pong/tests/project/',
-      'projects/Snake/tests/project/',
+      'projects/Demo/Invaders/tests/project/',
+      'projects/Demo/Pong/tests/project/',
+      'projects/Demo/Snake/tests/project/',
    ]
 );

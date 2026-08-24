@@ -13,7 +13,7 @@
 
 // Kept in alphabetical order by project path.
 return [
-   'Invaders' => ['interfaces' => ['CLI']],
-   'Pong'     => ['interfaces' => ['CLI']],
-   'Snake'    => ['interfaces' => ['CLI']],
+   'Demo/Invaders' => ['interfaces' => ['CLI']],
+   'Demo/Pong'     => ['interfaces' => ['CLI']],
+   'Demo/Snake'    => ['interfaces' => ['CLI']],
 ];

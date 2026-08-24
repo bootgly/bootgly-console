@@ -10,7 +10,7 @@
 
 use Bootgly\ACI\Tests\Suites;
 
-// Snake test registry — this project's Suites.
+// Pong test registry — this project's Suites.
 //
 // Each entry is a directory relative to this project's root carrying an
 // `autoboot.php` that returns a Suite (an entry already inside a `tests/`
@@ -18,11 +18,11 @@ use Bootgly\ACI\Tests\Suites;
 //   - 'tests/project/'  → tests/project/autoboot.php
 //
 // Run this project's suites with `bootgly test` from the project directory
-// (cd projects/Snake), one with `bootgly test <index>` and a single case with
+// (cd projects/Demo/Pong), one with `bootgly test <index>` and a single case with
 // `bootgly test <index> <case>`.
 return new Suites(
    directories: [
-      // The project's own suite — the signature contract of Snake.Project.php:
+      // The project's own suite — the signature contract of Pong.Project.php:
       'tests/project/',
    ]
 );

@@ -8,7 +8,7 @@
  * --------------------------------------------------------------------------
  */
 
-namespace Invaders;
+namespace Demo\Invaders;
 
 
 use Console\Game\Vector;

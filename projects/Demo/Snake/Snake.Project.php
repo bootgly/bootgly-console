@@ -11,7 +11,7 @@
 
 use Bootgly\API\Projects\Project;
 
-use Snake\Snake;
+use Demo\Snake\Snake;
 
 
 return new Project(

@@ -2,11 +2,13 @@
 
 namespace Console\App;
 
-use function assert;
 
-use Bootgly\ACI\Tests\Suite\Test;
+use function assert;
 use Closure;
 use InvalidArgumentException;
+
+use Bootgly\ACI\Tests\Suite\Test;
+
 
 return new Test(
    description: 'It should load the screens manifest and resolve screen views',

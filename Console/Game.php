@@ -102,7 +102,7 @@ abstract class Game extends App
       // @ Fork the Terminal Client/Server pair (or relay a single role — WASM)
       $this->Input->reading(
          CAPI: function ($read, $write): void {
-            $this->client($read, $write);
+            $this->join($read, $write);
          },
          SAPI: function ($reading): void {
             $this->serve($reading);
@@ -111,14 +111,14 @@ abstract class Game extends App
    }
 
    /**
-    * Terminal Client role: pump keystrokes into the channel as
-    * newline-framed tokens (escape sequences assembled and normalized
+    * Terminal Client role: join the game — pump keystrokes into the channel
+    * as newline-framed tokens (escape sequences assembled and normalized
     * to `Keystrokes` names).
     *
     * @param callable $read function (int $length): string|false — raw terminal input.
     * @param callable $write function (string $data): int|false — channel writer.
     */
-   protected function client (callable $read, callable $write): void
+   protected function join (callable $read, callable $write): void
    {
       // * Config
       $delay = 2000;      // µs between input polls (native non-blocking reads only)
@@ -156,23 +156,23 @@ abstract class Game extends App
          while ($buffer !== '') {
             if ($buffer[0] === "\e") {
                // @ Escape sequence: longest Keystrokes match wins
-               $matched = null;
+               $Keystroke = null;
                for ($bytes = min(strlen($buffer), 6); $bytes >= 2; $bytes--) {
-                  $matched = Keystrokes::tryFrom(substr($buffer, 0, $bytes));
+                  $Keystroke = Keystrokes::tryFrom(substr($buffer, 0, $bytes));
 
-                  if ($matched !== null) {
+                  if ($Keystroke !== null) {
                      break;
                   }
                }
 
-               if ($matched !== null) {
-                  $write("{$matched->name}\n");
-                  $buffer = substr($buffer, strlen($matched->value));
+               if ($Keystroke !== null) {
+                  $write("{$Keystroke->name}\n");
+                  $buffer = substr($buffer, strlen($Keystroke->value));
 
                   continue;
                }
                // ? Incomplete sequence split across reads — wait for the tail
-               if (strlen($buffer) < 6 && self::prefixed($buffer) === true) {
+               if (strlen($buffer) < 6 && self::check($buffer) === true) {
                   break;
                }
 
@@ -208,7 +208,7 @@ abstract class Game extends App
     * Whether any Keystrokes sequence starts with the given bytes
     * (incomplete escape sequence check).
     */
-   private static function prefixed (string $bytes): bool
+   private static function check (string $bytes): bool
    {
       foreach (Keystrokes::cases() as $Keystroke) {
          if (str_starts_with($Keystroke->value, $bytes) === true) {

@@ -74,7 +74,7 @@ class Snake extends Game
             $middle = intdiv($this->Canvas->rows, 2);
 
             $this->Canvas->clear();
-            $this->frame();
+            $this->outline();
             $this->Canvas->center($middle - 2, 'CLASSIC SNAKE GAME', self::HEAD);
             $this->Canvas->center($middle, 'Powered by the Bootgly Console platform', self::BORDER);
             $this->Canvas->center($middle + 2, '[Enter] play    [arrows] steer    [q] quit');
@@ -97,7 +97,7 @@ class Snake extends Game
          },
          render: function (): void {
             $this->Canvas->clear();
-            $this->frame();
+            $this->outline();
 
             // @ Food
             $this->Canvas->plot($this->Food->x, $this->Food->y, '● ', self::FOOD);
@@ -250,7 +250,7 @@ class Snake extends Game
    /**
     * Paint the board border.
     */
-   private function frame (): void
+   private function outline (): void
    {
       $columns = $this->Canvas->columns;
       $rows = $this->Canvas->rows;

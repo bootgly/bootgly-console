@@ -2,11 +2,13 @@
 
 namespace Console\Game;
 
+
 use function assert;
+use InvalidArgumentException;
 
 use Bootgly\ACI\Tests\Suite\Test;
 use Console\Game\Scenes\Scene;
-use InvalidArgumentException;
+
 
 return new Test(
    description: 'It should register scenes and switch between them running the enter hooks',

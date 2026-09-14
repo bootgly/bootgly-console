@@ -93,7 +93,7 @@ class Pong extends Game
             $middle = intdiv($this->Canvas->rows, 2);
 
             $this->Canvas->clear();
-            $this->frame();
+            $this->outline();
             $this->Canvas->center($middle - 2, 'PONG', self::BALL);
             $this->Canvas->center($middle, 'Powered by the Bootgly Console platform', self::BORDER);
             $this->Canvas->center($middle + 2, '[Enter] play    [hold ↑/↓] move    [q] quit');
@@ -109,7 +109,7 @@ class Pong extends Game
             $rows = $this->Canvas->rows;
 
             $this->Canvas->clear();
-            $this->frame();
+            $this->outline();
 
             // @ Center line
             $net = intdiv($columns, 2);
@@ -286,7 +286,7 @@ class Pong extends Game
    /**
     * Paint the board border.
     */
-   private function frame (): void
+   private function outline (): void
    {
       $columns = $this->Canvas->columns;
       $rows = $this->Canvas->rows;

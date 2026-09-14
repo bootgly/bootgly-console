@@ -18,7 +18,7 @@ use Bootgly\CLI\Terminal\Output;
 return new Test(
    description: 'It should pump keystrokes as newline-framed tokens (chunked, escape-aware)',
    test: function () {
-      // ! Game with in-memory streams (client() exposed)
+      // ! Game with in-memory streams (join() exposed)
       $stream = fopen('php://memory', 'r+');
       $Input = new Input($stream); // @phpstan-ignore-line
       $Output = new Output('php://memory');
@@ -26,7 +26,7 @@ return new Test(
       $Game = new class ($Input, $Output) extends Game {
          public function pump (callable $read, callable $write): void
          {
-            $this->client($read, $write);
+            $this->join($read, $write);
          }
 
          protected function update (float $delta): void

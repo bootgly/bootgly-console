@@ -76,9 +76,9 @@ class Invaders extends Game
    /** @var array<int,array{0:int,1:int}> Alive aliens (formation grid col, row) */
    public array $aliens = [];
    /** @var array<int,Bolt> Player shots (moving up) */
-   public array $shots = [];
+   public array $Shots = [];
    /** @var array<int,Bolt> Alien bombs (moving down) */
-   public array $bombs = [];
+   public array $Bombs = [];
    /** @var array<int,array{Sprite:\Console\Game\Sprite,Timer:Timer,x:int,y:int}> Explosions */
    public array $booms = [];
    /** March cadence (interval mutates as the formation shrinks) */
@@ -140,7 +140,7 @@ class Invaders extends Game
             $center = intdiv($this->Canvas->columns, 2);
 
             $this->Canvas->clear();
-            $this->frame();
+            $this->outline();
 
             // @ Decorative alien row (one sprite per formation color)
             foreach (self::ROWS as $offset => $alien) {
@@ -159,7 +159,7 @@ class Invaders extends Game
          },
          render: function (): void {
             $this->Canvas->clear();
-            $this->frame();
+            $this->outline();
 
             // @ Formation (shared sprites — lockstep march frame)
             $ox = $this->Formation->x;
@@ -178,12 +178,12 @@ class Invaders extends Game
             );
 
             // @ Projectiles
-            foreach ($this->shots as $Shot) {
+            foreach ($this->Shots as $Shot) {
                $this->Canvas->plot(
                   (int) round($Shot->Position->x), (int) round($Shot->Position->y), '│ ', self::SHOT
                );
             }
-            foreach ($this->bombs as $Bomb) {
+            foreach ($this->Bombs as $Bomb) {
                $this->Canvas->plot(
                   (int) round($Bomb->Position->x), (int) round($Bomb->Position->y), '▼ ', self::BOMB
                );
@@ -285,8 +285,8 @@ class Invaders extends Game
          2.0
       );
       $this->direction = 1;
-      $this->shots = [];
-      $this->bombs = [];
+      $this->Shots = [];
+      $this->Bombs = [];
       $this->booms = [];
 
       // @ Rearm the cadences — the fire cooldown pre-arms (first shot is instant)
@@ -388,7 +388,7 @@ class Invaders extends Game
       // @ Fire: one-shot cooldown — expired = ready
       $this->Fire->tick($delta);
       if ($this->Keyboard->pop('SPACE') === true && $this->Fire->expired === true) {
-         $this->shots[] = new Bolt(
+         $this->Shots[] = new Bolt(
             new Vector($this->Ship->x + 2.0, $this->Ship->y - 1.0),
             new Vector(0.0, -$rows * 0.9)
          );
@@ -399,7 +399,7 @@ class Invaders extends Game
       if ($this->Raid->tick($delta) === true && count($this->aliens) > 0) {
          [$col, $row] = $this->aliens[random_int(0, count($this->aliens) - 1)];
 
-         $this->bombs[] = new Bolt(
+         $this->Bombs[] = new Bolt(
             new Vector(
                $this->Formation->x + $col * self::STRIDE_X + 1.5,
                $this->Formation->y + $row * self::STRIDE_Y + 2.0
@@ -421,8 +421,8 @@ class Invaders extends Game
       }
 
       // @@ Player shots: integrate, cull off-board, collide with the formation
-      $shots = [];
-      foreach ($this->shots as $Shot) {
+      $Shots = [];
+      foreach ($this->Shots as $Shot) {
          $Shot->Position->add($Shot->Velocity, $delta);
 
          // ? Shot left the board
@@ -451,9 +451,9 @@ class Invaders extends Game
             continue;
          }
 
-         $shots[] = $Shot;
+         $Shots[] = $Shot;
       }
-      $this->shots = $shots;
+      $this->Shots = $Shots;
 
       // ? Wave cleared — respawn a faster formation
       if (count($this->aliens) === 0) {
@@ -466,8 +466,8 @@ class Invaders extends Game
 
       // @@ Bombs: integrate, cull off-board, collide with the ship
       $Hull = new Zone($this->Ship->x, $this->Ship->y, 5.0, 2.0);
-      $bombs = [];
-      foreach ($this->bombs as $Bomb) {
+      $Bombs = [];
+      foreach ($this->Bombs as $Bomb) {
          $Bomb->Position->add($Bomb->Velocity, $delta);
 
          // ? Bomb left the board
@@ -495,9 +495,9 @@ class Invaders extends Game
             continue;
          }
 
-         $bombs[] = $Bomb;
+         $Bombs[] = $Bomb;
       }
-      $this->bombs = $bombs;
+      $this->Bombs = $Bombs;
 
       // @@ Explosions: flicker on wall time, expire on their TTL
       $booms = [];
@@ -543,7 +543,7 @@ class Invaders extends Game
    /**
     * Paint the board border.
     */
-   private function frame (): void
+   private function outline (): void
    {
       $columns = $this->Canvas->columns;
       $rows = $this->Canvas->rows;

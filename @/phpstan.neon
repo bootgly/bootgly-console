@@ -3,12 +3,12 @@ parameters:
    excludePaths:
       analyse:
          - */tests/*
-         - */projects/*
    reportUnmatchedIgnoredErrors: false
 
    paths:
       - ../Console.php
       - ../Console/
+      - ../projects/
    ignoreErrors:
       - identifier: property.uninitializedReadonly
       - identifier: property.private

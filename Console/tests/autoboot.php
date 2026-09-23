@@ -15,6 +15,7 @@ return new Suite(
    suiteName: __NAMESPACE__,
    tests: [
       '1.1-console-autoboot',
+      '1.2-console-agent-skills',
       '2.1-game-client-tokens',
       '2.2-game-canvas-render',
    ]

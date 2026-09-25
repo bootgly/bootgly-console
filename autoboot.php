@@ -21,7 +21,7 @@ if (defined('CONSOLE_WORKING_BASE') === false) {
    define('CONSOLE_WORKING_DIR', CONSOLE_ROOT_DIR);
 }
 
-define('CONSOLE_VERSION', '1.0.5');
+define('CONSOLE_VERSION', '1.0.6');
 
 // ! Bootables ([0-9]) || (-[a-z]) || ([0-9]-[a-z])
 // -- nothing --

@@ -12,7 +12,10 @@
 // raise "use statement with non-compound name has no effect").
 
 
-class Console
+use Bootgly\API\Platform;
+
+
+class Console implements Platform
 {
    // * Config
    // ...

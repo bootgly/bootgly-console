@@ -5,6 +5,7 @@
 
 
 use Bootgly\ACI\Tests\Suite\Test;
+use Bootgly\API\Platform;
 use Console\App;
 
 
@@ -25,6 +26,26 @@ return new Test(
       yield assert(
          assertion: Console instanceof Console,
          description: 'The Console constant holds the Console bootable'
+      );
+      yield assert(
+         assertion: Console instanceof Platform,
+         description: 'The Console bootable implements the Bootgly\API\Platform contract'
+      );
+
+      // @ Included after Bootgly (Composer's `files` order): the root is mounted all the same
+      $Process = proc_open(
+         [PHP_BINARY, '-r', 'require $argv[1]; require $argv[2]; echo json_encode(defined("Console") && Console instanceof Bootgly\API\Platform);', '--', BOOTGLY_ROOT_DIR . 'autoboot.php', CONSOLE_ROOT_DIR . 'autoboot.php'],
+         [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
+         $Pipes
+      );
+      $late = (string) stream_get_contents($Pipes[1]);
+      fclose($Pipes[1]);
+      fclose($Pipes[2]);
+      proc_close($Process);
+
+      yield assert(
+         assertion: $late === 'true',
+         description: "The Console root is mounted when its autoboot.php runs after Bootgly's (got '{$late}')"
       );
 
       // @ Double boot guarded

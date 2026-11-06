@@ -42,9 +42,15 @@ spl_autoload_register (function (string $class) {
 // ! Resources ([a-z])
 // ...
 
-// @
-/**
- * @var Console Console
- */
-const Console = new Console;
-Console->autoboot();
+// @ The `Console` root implements `Bootgly\API\Platform`, so Bootgly creates it
+//   (the global `Console` constant) and boots it once its own autoloader exists:
+//   `Bootgly::autoboot()` when this file runs first (the launchers), here when
+//   Bootgly is already booted (Composer's `files` order)
+if (defined('Bootgly') === true) {
+   // ? A Bootgly older than 1.1 cannot mount it
+   if (method_exists('Bootgly', 'mount') === false) {
+      throw new LogicException('The Console platform requires Bootgly 1.1 or later.');
+   }
+
+   Bootgly::mount('Console');
+}

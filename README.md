@@ -21,16 +21,16 @@ The **opinionated TUI layer** over `Bootgly\CLI`: an application shell for full-
 
 ## Getting started
 
-Use the **canonical installer** — it sets up a [bootgly.kit](https://github.com/bootgly/bootgly.kit) workspace, where the platforms are unified, and asks which ones to enable (pick **Console**):
+Use the **canonical installer** — it sets up a [bootgly.kit](https://github.com/bootgly/bootgly.kit) workspace, where the platforms are unified. Every platform (**Console** and Web) comes set up, with no question asked:
 
 ```bash
 curl -fsSL https://bootgly.com/install | bash
 ```
 
-From the kit, the project wizard imports this platform's demo projects (**Import projects from Platforms → Console**):
+The wizard's first run imports every demo project of this platform into `projects/Demo/`, as a living guide:
 
 ```bash
-php bootgly projects create
+php bootgly projects list
 ```
 
 > ⚠️ Using this repository directly is **discouraged** — `bootgly.kit` is the starting point: it is where the Bootgly core and the platforms are mounted and booted together. See [Getting started](https://docs.bootgly.com/guide/getting-started). Cloning `bootgly-console` standalone is only meant for developing the platform itself.
@@ -48,10 +48,10 @@ php bootgly projects create
 | `Pong`     | Pong vs AI — paddles, ball physics, scenes |
 | `Invaders` | Space Invaders — sprite sheets and 2D math (hitboxes) |
 
-After importing them in the kit:
+Once imported in the kit:
 
 ```bash
-php bootgly project Snake start
+php bootgly project Demo/Snake start
 ```
 
 ## Developing the platform
@@ -61,7 +61,7 @@ Only for working on `bootgly-console` itself (with the `bootgly` core as a sibli
 ```bash
 ./bootgly test                                # test suites
 vendor/bin/phpstan analyse -c @/phpstan.neon  # static analysis
-./bootgly project Snake start                 # run a demo
+./bootgly project Demo/Snake start            # run a demo
 ```
 
 [Documentation][PROJECT_DOCS] — see the *Console Platform* guide and the *Console* manual pages.
